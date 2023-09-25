@@ -8,5 +8,6 @@ Steps:
      sensor: !include sensors.yaml
      switch: !include switches.yaml
 3. Copy the sensors.yaml and switches.yaml next to your configuration.yaml
-4. Reload the configuration using the UI or restart home assistant
-5. Add sensors, search by typing "Intaqo"
+4. Edit the sensors.yaml and switches.yaml and replace the IP adres with the IP of your Intaqo device.
+5. Reload the configuration using the UI or restart home assistant
+6. Add sensors, search by typing "Intaqo"
