@@ -1,5 +1,7 @@
 # IntaqoHomeAssistant
 Intaqo Aquarium controller HomeAssistant integration using basic switches and sensors
+https://intaqo.com/
+https://www.home-assistant.io/
 
 Include the sensors and switches configuration to your own home assitant configuration.
 Steps:
