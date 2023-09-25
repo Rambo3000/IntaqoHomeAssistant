@@ -1,0 +1,10 @@
+- platform: rest
+  resource: http://10.0.0.43/valve
+  unique_id: Intaqo_CO2_valve
+  name: "Intaqo CO2 valve"
+  body_on: '{"openValve": true}'
+  body_off: '{"openValve": false}'
+  method: PUT
+  is_on_template: "{{ value_json.valveOpened }}"
+  headers:
+    Content-Type: application/json

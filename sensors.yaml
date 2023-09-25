@@ -1,0 +1,72 @@
+- platform: rest
+  resource: http://10.0.0.43/ph
+  method: GET
+  unique_id: Intaqo_ph
+  name: "Intaqo pH sensor"
+  value_template: >-
+    {% if value_json.pH  < 15 %}
+      {{ value_json.pH }}
+    {% endif %}
+  scan_interval: 10
+  state_class: measurement
+- platform: rest
+  resource: http://10.0.0.43/temperature
+  method: GET
+  unique_id: Intaqo_temperature_sensor
+  name: "Intaqo temperature sensor"
+  value_template: '{{ value_json.temperature }}'
+  scan_interval: 30
+  device_class: temperature
+  unit_of_measurement: "°C"
+- platform: rest
+  resource: http://10.0.0.43/valve
+  method: GET
+  unique_id: Intaqo_CO2_valve_status
+  name: "Intaqo CO2 valve status"
+  value_template: '{{ value_json.valveOpened | int }}'
+  scan_interval: 10
+- platform: rest
+  resource: http://10.0.0.43/pumpUsage?pumpId=0
+  method: GET
+  unique_id: Intaqo_Pump_0_volumeRemaining
+  name: "Intaqo Masterline Micro I volume remaining"
+  value_template: '{{ value_json.startingVolume.value - value_json.usedVolume.value}}'
+  scan_interval: 600
+  device_class: volume
+  unit_of_measurement: "mL"
+- platform: rest
+  resource: http://10.0.0.43/pumpUsage?pumpId=0
+  method: GET
+  unique_id: Intaqo_Pump_0_volumeContainer
+  name: "Intaqo Masterline Micro I container volume"
+  value_template: '{{ value_json.startingVolume.value }}'
+  scan_interval: 600
+  device_class: volume
+  unit_of_measurement: "mL"
+- platform: rest
+  resource: http://10.0.0.43/pumpUsage?pumpId=1
+  method: GET
+  unique_id: Intaqo_Pump_1_volumeRemaining
+  name: "Intaqo Masterline Macro II volume remaining"
+  value_template: '{{ value_json.startingVolume.value - value_json.usedVolume.value}}'
+  scan_interval: 600
+  device_class: volume
+  unit_of_measurement: "mL"
+- platform: rest
+  resource: http://10.0.0.43/pumpUsage?pumpId=1
+  method: GET
+  unique_id: Intaqo_Pump_1_volumeContainer
+  name: "Intaqo Masterline Macro II container volume"
+  value_template: '{{ value_json.startingVolume.value }}'
+  scan_interval: 600
+  device_class: volume
+  unit_of_measurement: "mL"
+- platform: rest
+  resource: http://10.0.0.43/internalTemperature
+  method: GET
+  unique_id: Intaqo_internal_temperature_sensor
+  name: "Intaqo internal temperature sensor"
+  value_template: '{{ value_json.internalTemperature }}'
+  scan_interval: 30
+  device_class: temperature
+  unit_of_measurement: "°C"
